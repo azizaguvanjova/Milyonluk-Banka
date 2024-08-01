@@ -30,7 +30,7 @@ export default function App() {
 
 const handleSubmit =(e)=>{
   e.preventDefault();
-  const inputCode = `${userInput.charOne} ${userInput.charTwo} ${userInput.charThree} ${userInput.charFour}`
+  const inputCode = `${userInput.charOne}${userInput.charTwo}${userInput.charThree}${userInput.charFour}`
   setVerified(inputCode=== passCode)
 }
   /* Challenge
