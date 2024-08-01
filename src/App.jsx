@@ -18,6 +18,21 @@ export default function App() {
 
   const [verified, setVerified] = useState(undefined);
 
+ const handleChange = (e)=>{
+  const {name, value} = e.target;
+  setUserInput(prevState => ({...prevState, [name]: value}));
+
+ }
+  
+
+
+
+
+const handleSubmit =(e)=>{
+  e.preventDefault();
+  const inputCode = `${userInput.charOne} ${userInput.charTwo} ${userInput.charThree} ${userInput.charFour}`
+  setVerified(inputCode=== passCode)
+}
   /* Challenge
 
 	Doğrulama kodu formu henüz kullanıcının girdisini kontrol etmiyor. Sizin göreviniz aşağıdaki gibi kurulumu tamamlamaktır: 
@@ -39,17 +54,17 @@ export default function App() {
     <div className="wrapper">
       <Header />
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <Message status={verified} />
 
         <div>
-          <input required type="password" name="charOne" />
+          <input required type="password" name="charOne"  onChange={handleChange} value={userInput.charOne}/>
 
-          <input required type="password" name="charTwo" maxLength="1" />
+          <input required type="password" name="charTwo" maxLength="1" onChange={handleChange}  value={userInput.charTwo}/>
 
-          <input required type="password" name="charThree" maxLength="1" />
+          <input required type="password" name="charThree" maxLength="1" onChange={handleChange}  value={userInput.charThree} />
 
-          <input required type="password" name="charFour" maxLength="1" />
+          <input required type="password" name="charFour" maxLength="1" onChange={handleChange}  value={userInput.charFour}/>
         </div>
 
         <button disabled={verified}>Gönder</button>
